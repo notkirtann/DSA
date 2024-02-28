@@ -3,27 +3,46 @@ public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         int n = nums.size();
         sort(nums.begin(), nums.end());
-        set<vector<int>> set;
-        vector<vector<int>> output;
-        for(int i=0; i<n-2; i++){
-            int low = i+1, high = n-1;
-            while(low < high){
-                if(nums[i] + nums[low] + nums[high] < 0){
-                    low++;
-                }
-                else if(nums[i] + nums[low] + nums[high] > 0){
-                    high--;
-                }
-                else{
-                    set.insert({nums[i], nums[low], nums[high]});
-                    low++;
-                    high--;
+        
+        unordered_set<int> st;
+        set<vector<int>> seen;
+        vector<vector<int>> ans;
+        for(int i = 0; i < n - 2; i++) {
+            if(nums[i] > 0) break;
+            if(i > 0 && nums[i] == nums[i - 1]) continue;
+
+            int j = i + 1;
+            int k = n - 1;
+            while(j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if(sum == 0) {
+                    ans.push_back({nums[i], nums[j], nums[k]});
+                    j++; k--;
+                    while(j < n && nums[j] == nums[j - 1]) {
+                        j++;
+                    }
+                    while(k > i && nums[k] == nums[k + 1]) {
+                        k--;
+                    }
+                } else if(sum < 0) {
+                    j++;
+                } else {
+                    k--;
                 }
             }
         }
-        for(auto it : set){
-            output.push_back(it);
+
+        for(auto triplet: seen) {
+            ans.push_back(triplet);
         }
-        return output;
+
+        return ans;
     }
 };
+
+/*
+
+[-1,0,1,2,-1,-4]
+[-4,-1,-1,0,1,2]
+
+*/
