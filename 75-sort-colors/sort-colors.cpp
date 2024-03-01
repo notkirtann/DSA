@@ -1,6 +1,7 @@
 class Solution {
 public:
-    void sortColors(vector<int>& nums) {
+    void sortColors(vector<int>& nums) 
+    {
         int left=0;
         int mid=0;
         int right=nums.size()-1;
@@ -20,6 +21,8 @@ public:
             }
         }
     }
+
+    
         // ---------------------------------------------
         // int count0 = 0;
         // int count1 = 0;
@@ -34,6 +37,8 @@ public:
         // for(int i=count0;i<count0+count1;i++) nums[i]=1;
         // for(int i=count0+count1;i<nums.size();i++) nums[i]=2;
         // ---------------------------------------------
+
+
         // sort(nums.begin(),nums.end());
     
 };
