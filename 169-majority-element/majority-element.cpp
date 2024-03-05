@@ -19,15 +19,6 @@ public:
             else{
                 count--;
             }
-
-        }
-        count = 0;
-
-        for(int i=0; i<n; i++){
-
-            if(element == nums[i]){
-                count++;
-            }
         }
 
         if(count > n/2){
