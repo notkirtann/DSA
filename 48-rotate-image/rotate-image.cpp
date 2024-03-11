@@ -6,8 +6,8 @@ public:
         {
             for(int j=0;j<i;j++)
             {
-                if(i==j) continue;
-                else swap(matrix[i][j],matrix[j][i]);
+                
+                swap(matrix[i][j],matrix[j][i]);
             }
         }
 
