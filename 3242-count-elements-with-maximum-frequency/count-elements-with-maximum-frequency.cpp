@@ -1,21 +1,23 @@
 class Solution {
 public:
     int maxFrequencyElements(vector<int>& nums) {
-        map<int, int> mpp;
-        int count = 0;
-        int maxi = 0;
-        for (int i = 0; i < nums.size(); i++) {
-            mpp[nums[i]]++;
-
-            if (mpp[nums[i]] > maxi) {
-                maxi = mpp[nums[i]];
-                count = 0;
+        int total=0;
+        int maxi=0;
+        vector<int> Count(101);
+        for(int x : nums)
+        {
+            Count[x]++;
+            int freq = Count[x];
+            if(freq>maxi)
+            {
+                maxi = freq;
+                total = maxi;
             }
-
-            if (mpp[nums[i]] == maxi)
-                count++;
+            else if (freq==maxi)
+            {
+                total +=maxi ;
+            }
         }
-
-        return count * maxi;
+         return total;
     }
 };
